@@ -1,0 +1,24 @@
+<div th:replace="fragments/header::header"></div>
+	<!-- Page Section Start -->
+    <div class="container">
+	     <form th:action="@{/login}" method="POST" class="form-signin">
+		    <div th:if="${param.error}" class="alert alert-danger">
+		    	Oups !
+		    </div>
+	    
+	        <div class="avatar"><i class="material-icons">&#xE7FF;</i></div>
+	        <h4 class="modal-title">Veuillez vous connecter</h4>
+	        <div class="form-group">
+	            <input type="text" id="email" name="email" th:placeholder="Email" class="form-control" required/>
+	        </div>
+	        <div class="form-group">
+	            <input type="password" th:placeholder="Password" id="password" name="password" class="form-control" required/>
+	        </div>
+	        <div class="form-group small clearfix">
+	            <label class="checkbox-inline"><input type="checkbox"> Remember me</label>
+	            <a href="#" class="forgot-link">Forgot Password?</a>
+	        </div>
+	        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Je me connecte !">
+	    </form>
+	</div>
+<div th:replace="fragments/footer::footer"></div>

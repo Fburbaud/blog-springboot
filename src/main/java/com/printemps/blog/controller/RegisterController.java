@@ -1,5 +1,7 @@
 package com.printemps.blog.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,19 +20,23 @@ public class RegisterController {
 	private UserServices userServices;
 	
 	@GetMapping("/register")
-	public String register(Model model){
-		model.addAttribute("user", new User());
+	public String register(){
 		return ("user/register");
 	}
 
 	@PostMapping("/register")
-	public String register(@Validated User user, BindingResult bindingResult, Model model) {
+	public String register(@Validated User user, BindingResult bindingResult, Model model, HttpSession session) {
 		model.addAttribute("user", new User());
 		if(bindingResult.hasErrors()) {
-			return ("user/register");
-		}
+        	return ("user/register");
+        }
 		userServices.createUser(user);
-		return ("user/home");
+       
+        session.setAttribute("username", user.getNom());
+        model.addAttribute("username", user.getNom());
+        return "redirect:/register?success"; 
+        
+	
 	}
 
 }

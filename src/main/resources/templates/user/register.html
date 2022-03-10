@@ -6,6 +6,21 @@
                 <div class="col-lg-6 col-12 mb-40 ml-auto">
                     <div class="login-register-form-wrap">
                         <h3>Register</h3>
+                        <div th:if="${param.success}">
+							<div class="alert alert-success" role="alert">
+							  Votre compte a été bien créé <b th:text="${username}"></b>
+							  
+							   Votre compte a été bien créé <b th:text="${#usernames}"></b>
+							</div>
+						</div>
+						
+						<div th:if="${param.danger}">
+							<div class="alert alert-danger" role="alert">
+							  Votre compte a été bien créé <b th:text="${username}"></b>
+							  
+							   Votre compte a été bien créé <b th:text="${#usernames}"></b>
+							</div>
+						</div>
                     	<form method="post" th:action="@{/register}" th:object="${user}">
 							<div class="form-group">
 								<label for="firstname" class="form-control-label">Nom</label>

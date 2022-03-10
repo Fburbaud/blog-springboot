@@ -13,6 +13,10 @@ public class UserServices {
 	@Autowired
 	private UserRepository userRepository;
 	
+	public User findByEmail(String email) {
+        return  userRepository.findByEmail(email);
+    }
+	
 	public void createUser(User user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setPassword(encoder.encode(user.getPassword()));

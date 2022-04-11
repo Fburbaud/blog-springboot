@@ -1,0 +1,32 @@
+<!-- Appel fragment header -->
+<div th:replace="fragments/header::header"></div>
+       
+   <div class="container">
+      
+   	<h3>Detail article: <span th:text="${article.titre}" /> </h3>
+   	<p th:text="${article.resume}"></p>
+   	
+   	<p >Auteur:
+   		<b th:text="${article.user} ? ${article.user.prenom} : 'Inconnu' "></b>
+   	</p>
+   	
+   	<hr>
+	   	<h5>Liste des commentaires</h5>
+	   	<div th:each="comment:${comments}">
+	   	<p> Posté par: <span th:text="${comment.user.prenom}"></span> </p>
+	   	<p th:text="${comment.content}">
+	   	</p>
+   	<hr>
+   	</div>
+   	
+   	<form method="post" th:action="@{/ajout-comment}" th:object="${comment}" >
+   	
+   	<input type="hidden" name="article" th:value="${article.id}" />
+	  <div class="form-floating">
+	  <textarea class="form-control" name="content" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+	  <label for="floatingTextarea">Comments</label>
+	</div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+<div th:replace="fragments/footer::footer"></div>

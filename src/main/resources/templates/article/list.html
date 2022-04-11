@@ -1,0 +1,37 @@
+<!-- Appel fragment header -->
+	<div th:replace="fragments/header::header"></div>
+		  
+	<!-- >div layout:fragment="content" class="container">
+	 	qsqsq
+        </div>
+        -->
+        
+    <div class="container">
+        <div class="btn btn-outline-warning" th:if="${articles.isEmpty()}">
+	        Pas d'article
+	    </div>
+    	<div th:if="${!articles.isEmpty()}">
+        	<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col">Titre</th>
+			      <th scope="col">Résumé</th>
+			      <th scope="col">Auteur</th>
+			      <th>Action</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr th:each="article:${articles}">
+			      <th scope="row"  th:text="${article.id}"> </td>
+			      <td th:text="${article.titre}"> </td>
+			      <td th:text="${article.resume}"> </td>
+			      <td th:text="${article.user} ? ${article.user.prenom} : 'Inconnu' "> </td>
+			      <td> <a th:href="@{'/show/' + ${article.id}}">show </a></td>
+			    </tr>
+			    
+			  </tbody>
+			</table>
+			</div>
+        </div>
+<div th:replace="fragments/footer::footer"></div>

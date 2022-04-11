@@ -1,0 +1,20 @@
+<div th:replace="fragments/header::header"></div>
+	
+	<div class="container">
+	
+		<form method="post" th:action="@{ajout-article}" th:object="${article}">
+			  <div class="mb-3">
+			    <label class="form-label">Titre</label>
+			    <input type="text" class="form-control" name="titre">
+			  </div>
+			  
+			  <div class="mb-3">
+			    <label class="form-label">Résumé</label>
+			    <input type="text" class="form-control" name="resume">
+			  </div>
+			  			  
+			  <button type="submit" class="btn btn-primary">Envoyer</button>
+		</form>
+		
+	</div>
+<div th:replace="fragments/footer::footer"></div>
